@@ -1,28 +1,9 @@
-import type { Logger } from "winston"
+import { bootstrapApp } from "@/app/base"
 
-import { Hono } from "hono"
-import { requestId } from "hono/request-id"
+const app = bootstrapApp()
 
-import { logger } from "@/app/logger"
-
-type AppEnv = {
-  Variables: {
-    logger: Logger
-  }
-}
-
-const app = new Hono<AppEnv>()
-
-app.use(requestId())
-
-app.use("*", async (ctx, next) => {
-  ctx.set("logger", logger)
-  await next()
-})
-
-app.get("/", (c) => {
-  c.var.logger.info("hello hono")
-  return c.text("Hello Hono!")
+app.get("/", ctx => {
+  return ctx.text("Hello Hono!")
 })
 
 export { app }

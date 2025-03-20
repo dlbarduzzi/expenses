@@ -11,6 +11,7 @@ export default antfu({
   },
 }, {
   rules: {
+    "style/arrow-parens": "off",
     "no-empty": "error",
     "no-empty-function": "error",
     "node/no-process-env": "error",
