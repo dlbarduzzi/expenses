@@ -9,6 +9,13 @@ export default antfu({
     semi: false,
     quotes: "double",
   },
+  // markdown: {
+  //   overrides: {
+  //     stylistic: {
+  //       indent: 2,
+  //     },
+  //   },
+  // },
 }, {
   rules: {
     "no-empty": "error",

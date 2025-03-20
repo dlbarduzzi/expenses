@@ -3,12 +3,20 @@
     "target": "ESNext",
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
+    "baseUrl": ".",
     "module": "NodeNext",
-    "types": [
-      "node"
-    ],
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "types": ["node"],
     "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noUncheckedIndexedAccess": true,
+    "outDir": "./dist",
     "verbatimModuleSyntax": true,
     "skipLibCheck": true
-  }
+  },
+  "exclude": ["node_modules"]
 }
