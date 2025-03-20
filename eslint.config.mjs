@@ -9,23 +9,15 @@ export default antfu({
     semi: false,
     quotes: "double",
   },
-  // markdown: {
-  //   overrides: {
-  //     stylistic: {
-  //       indent: 2,
-  //     },
-  //   },
-  // },
 }, {
   rules: {
     "no-empty": "error",
     "no-empty-function": "error",
     "node/no-process-env": "error",
     "node/no-process-exit": "error",
+    "node/prefer-global/process": "off",
     "prefer-const": "error",
-    "perfectionist/sort-imports": ["error", {
-      tsconfigRootDir: ".",
-    }],
+    "perfectionist/sort-imports": "off",
     "style/max-len": ["error", { code: 88 }],
     "style/quotes": "error",
     "ts/no-unused-vars": ["error", {
