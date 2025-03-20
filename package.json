@@ -1,15 +1,21 @@
 {
   "name": "expenses",
   "type": "module",
+  "version": "0.1.0",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",
     "hono": "^4.7.5"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^4.10.1",
     "@types/node": "^20.11.17",
+    "eslint": "^9.22.0",
+    "eslint-plugin-format": "^1.0.1",
     "tsx": "^4.7.1"
   }
 }
