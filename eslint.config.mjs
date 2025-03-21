@@ -19,6 +19,7 @@ export default antfu({
     "node/prefer-global/process": "off",
     "prefer-const": "error",
     "perfectionist/sort-imports": "off",
+    "perfectionist/sort-named-imports": "off",
     "style/max-len": ["error", { code: 88 }],
     "style/quotes": "error",
     "ts/no-unused-vars": ["error", {

@@ -1,6 +1,9 @@
-import { bootstrapApp } from "@/app/base"
+import { newApp, bootstrap, document } from "@/core/base"
 
-const app = bootstrapApp()
+const app = newApp()
+
+bootstrap(app)
+document(app)
 
 app.get("/", ctx => {
   return ctx.text("Hello Hono!")

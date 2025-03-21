@@ -2,7 +2,7 @@ import { serve } from "@hono/node-server"
 
 import { app } from "./app"
 import { envs } from "./envs"
-import { logger } from "@/app/logger"
+import { logger } from "@/core/logger"
 
 serve({
   fetch: app.fetch,
