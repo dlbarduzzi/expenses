@@ -20,6 +20,7 @@ export default antfu({
     "prefer-const": "error",
     "perfectionist/sort-imports": "off",
     "perfectionist/sort-named-imports": "off",
+    "regexp/prefer-d": "off",
     "style/max-len": ["error", { code: 88 }],
     "style/quotes": "error",
     "ts/no-unused-vars": ["error", {
