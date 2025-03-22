@@ -3,6 +3,7 @@ import type { AppEnv, AppOpenAPIHono } from "./types"
 import { requestId } from "hono/request-id"
 import { OpenAPIHono } from "@hono/zod-openapi"
 import { apiReference } from "@scalar/hono-api-reference"
+import { HTTPException } from "hono/http-exception"
 
 import { logger } from "./logger"
 import { jsonHeaderValidate } from "./utils"
@@ -61,6 +62,16 @@ export function bootstrap(app: AppOpenAPIHono) {
   })
 
   app.onError((err, ctx) => {
+    if (
+      err instanceof HTTPException
+      && err.message === "Malformed JSON in request body"
+    ) {
+      return ctx.json({
+        ok: false,
+        error: StatusBadRequestText,
+        message: err.message,
+      }, StatusBadRequestCode)
+    }
     ctx.var.logger.error("uncaught exception", {
       error: err.message,
       stack: err.stack,
