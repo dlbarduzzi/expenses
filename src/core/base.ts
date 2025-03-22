@@ -5,28 +5,41 @@ import { OpenAPIHono } from "@hono/zod-openapi"
 import { apiReference } from "@scalar/hono-api-reference"
 
 import { logger } from "./logger"
-import packageJSON from "../../package.json"
+import { jsonHeaderValidate } from "./utils"
 
 import {
   StatusNotFoundCode,
   StatusNotFoundText,
+  StatusBadRequestCode,
+  StatusBadRequestText,
   StatusUnprocessableEntityCode,
   StatusUnprocessableEntityText,
   StatusInternalServerErrorCode,
   StatusInternalServerErrorText,
 } from "./status"
 
+import packageJSON from "../../package.json"
+
 export function newApp() {
   return new OpenAPIHono<AppEnv>({
     strict: false,
     defaultHook: (result, ctx) => {
-      if (!result.success) {
+      if (result.success) {
+        return
+      }
+      const error = jsonHeaderValidate(ctx.req.raw.headers)
+      if (error != null) {
         return ctx.json({
           ok: false,
-          error: StatusUnprocessableEntityText,
-          fields: result.error.flatten().fieldErrors,
-        }, StatusUnprocessableEntityCode)
+          error: StatusBadRequestText,
+          message: error,
+        }, StatusBadRequestCode)
       }
+      return ctx.json({
+        ok: false,
+        error: StatusUnprocessableEntityText,
+        fields: result.error.flatten().fieldErrors,
+      }, StatusUnprocessableEntityCode)
     },
   })
 }

@@ -21,6 +21,7 @@ export default antfu({
     "perfectionist/sort-imports": "off",
     "perfectionist/sort-named-imports": "off",
     "regexp/prefer-d": "off",
+    "regexp/no-useless-escape": "off",
     "style/max-len": ["error", { code: 88 }],
     "style/quotes": "error",
     "ts/no-unused-vars": ["error", {
